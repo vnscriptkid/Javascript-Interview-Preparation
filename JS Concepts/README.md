@@ -190,6 +190,9 @@ class Dog extends Animal {
 
 ## Networking
 - What is CORS?
+  - Browser security mechanism when detecting request to another domain || same domain but another port
+  - Before taking that route, Browser sends a preflight asking server if it should do that
+
 - What is JSONP?
 
 ## Events
