@@ -4,25 +4,43 @@
   - The most common version is ES5, but majors change has been introduced since then
   - Now we can write JS code outside browser using NodeJS, a runtime environment, powered by V8, the engine is used by Chrome
   - Major changes are: class, promise, async/await, const, let, spreading, destructring
+  - Over the years, there's a committee, who decides what new features to add to JS, then it's up to vendors like Chrome, Firefox to implement it
+    - See: https://github.com/tc39/proposals
+  - JS is backward-compatible, means code you write today still works fine in 10 years.
+    - Browser: https://caniuse.com/
+    - Node: https://node.green/ 
+  - The committee doesnt' redefine old features but add a thin layer on top of old versions. So ES6 can be convert to 100% ES5 equavilent code.
 
 - What is compilations vs polyfilling?
-  - Compilation is the process of converting JS code from new syntax to older syntax
-  - Polyfilling is to make sure code behaves the same in different browsers
+  - Compilation is the process of converting JS code from new syntax to older syntax so that we can use latest features of JS
+  without caring about browser support
+    - https://babeljs.io/
+  - Polyfilling is actually the same thing, used for whole new feature like Promise
+  There's no Promise at all in older version of JS.
+    - https://www.npmjs.com/package/promise-polyfill
 
 - What is `use strict` and what does it do?
-  - Provide additional checks for JS code
-  - __What kind of checks?
-  - __When should i use this?
+  - Make debugging easier, prevent ambiguous code from running
+  - Can be used in global context or within function context
+    - "use strict;"
+  - Features: (__GDP__ __V__ ietnam)
+    - (G) Prevent defining variables without keywords var || let || const (Attach to global obj in non-strict mode)
+    - (P) Prevent using preserved keywords as variable name: let, const, eval
+    - (V) Variables inside `val('...')` does not leak to outside scope
+    - (D) Prevent deleting variables, function, arguments
  
 - Does JS pass variables by reference or by value?
   - Both are used depending on type of vars
     - Pass by ref: array, object
     - Pass by value: number, string, null, undefined
+  - Follow-up: What are pass-by-value and pass-by-ref:
+    - pass-by-value: pass a copy of original data, any modification on copy version doesn't affect original data.
+    - pass-by-ref: pass a ref (pointer) to original data, any modification using ref, does affect original data.
 
 - What are the rest operators? Boxing arbitrary number of varialbes inside one variable
   - Use cases:
-      -  flexible function api, clean syntax (es5: arguments)
-      -  take leftover parts while destructuring
+      -  flexible function api, clean syntax (es5, `arguments` looks like an array but not, be careful)
+      -  collapse left-over parts while destructuring
 ```javascript
 // boxing all additional args to rest arr
 function(a, b, ...rest) {}
@@ -34,8 +52,8 @@ const [first, ...rest] = [1,2,3]
 - What is the spread operator? ES6 syntax, unboxing object or array
   - Use cases:
     - (1) Copy object, array (shallow copy) // visualize nested object copy
-    - (2) Merging object
-    - (3) Passing arguments wrapper and inner
+    - (2) Merging objects, arrays
+    - (3) Exploding arguments list and passing to function
 
 ```javascript
 // (1) 
@@ -51,14 +69,33 @@ const merged = { ...first, b: 2, ...third }
 function wrapper(...args) {
   return inner(...args) {  }
 }
+
+function max(...args) {
+  return Math.max(...args);
+}
+console.log(max(1,2,3)) // 3
 ```
 
-- What are template strings? ES6 feature that allows using string without concatenation, support variable injection, multi-lines spanning
+- What are template strings?
+  - String without concatenation
+  - Don't need to use escape characters in case using single-quote or double-quote inside string.
+  - Variable embedding (expression that resolves a value)
+  - Multi-lines string
 ```javascript
 console.log(`My full name is ${firstName} ${lastName}`);
 ```
 
-- What are template string tags? Tags in template strings are reference of variable names or anything that resolves to a value (expression)
+- What are template string tags?
+  - Example: 
+    - styled-component
+    - http://i18n-tag.kolmer.net/
+
+```js
+function h1(args) {
+  return `<h1>${args[0]}</h1>`;
+}
+console.log(h1`This is a h1 heading`);
+```
   
 ## Types & Equality
 - What are the different types in JS?
