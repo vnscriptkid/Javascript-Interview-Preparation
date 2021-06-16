@@ -99,12 +99,39 @@ console.log(h1`This is a h1 heading`);
   
 ## Types & Equality
 - What are the different types in JS?
-  - Primitive: string, number, null, undefined
-  - Object: object, array
+  - Primitive: 
+    - String: 'a', "ab"
+    - Number: 1, 2.3
+    - null: typeof null // object (it should be null, JS's mistake)
+    - undefined
+  - Object: 
+    - Object: {}, new Object()
+    - Array
+
+- What is the difference between statically typed language like Java vs dynamically typed language like JS:
+  - For Java, data type is a must when declaring variable, can't change type later
+  - For JS, variable type is determined at runtime, so no specific type is used when declaring variable but `var, let, const`
+
+- Differentiate `null` vs `undefined`?
+  - Both are JS types
+  - `undefined` is set by JS engine, means __not declared
+    - access a variable that is not declared yet
+    - access non-exist key in object
+    - access a out-of-range value in array
+  - `null` is set by us, means __empty
+  - Compared to Java: Null means absence of value
 
 - What is the difference between `===` vs `==`?
-  - `==`: loose comparision as `1 == '1'` is `true`. JS converts both to the same type before comparing them
-  - `===`: strict comparision. No conversion is made
+  - `==`: equality `1 == '1'` is `true`. 
+    - If both sides are different types:
+      - JS converts both to the same type before comparing them
+        - 2 == '2' // String(2) == 2
+        - false == 'false' // false == Boolean('false')
+      - Might resolve to `false || true`. It's unpredictable
+  - `===`: strict equality. No conversion is made
+    - If both sides are different types => 100% false. It's predictable
+  - https://dorey.github.io/JavaScript-Equality-Table/
+  - Always use 3 equals unless you have a good reason to use 2.
 
 - What is `NaN` and how can we check for it?
   - when convert string to number using parseInt
