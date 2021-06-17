@@ -28,7 +28,7 @@
     - (P) Prevent using preserved keywords as variable name: let, const, eval
     - (V) Variables inside `val('...')` does not leak to outside scope
     - (D) Prevent deleting variables, function, arguments
-    - (T) Stop `this` keyword being global object
+    - (T) Stop `this` keyword being global object. It's `undefined` for those cases.
  
 - Does JS pass variables by reference or by value?
   - Both are used depending on type of vars
@@ -372,6 +372,31 @@ person.talk()
 
 ## OOP
 - What is prototype chain?
+  - Property lookup:
+    - `obj.someKey`: First search for `someKey` inside `obj`, if not found incrementally search accross prototype chain through `__proto__`
+    ```js
+    var company = {name: 'viettel'}
+    // var company = new Object({ name: 'viettel' })
+    
+    // `company` inherits from `Object.prototype`
+    console.log(company.__proto__ === Object.prototype)
+    // We can point company.__proto__ to anywhere we want to inherit from
+    
+    // Interesting fact: Object.prototype is the highest in inheritance chain
+    console.log(Object.prototype.__proto__ === null)
+    ```
+    
+  - `Object.create` do 2 things:
+    - Create new object
+    - Inherits from somewhere (behind the scene set __proto__)
+
+  ```js
+  var emp = { company: 'viettel' }
+  var boss = Object.create(emp, {department: { value: 'IT' }});
+  console.log(boss.department)
+  console.log(boss.company)
+  ```
+  
   - When we make a constructor function `X`, there are 2 objects created:
     - object that holds function itself
     - `prototype` object that makes inheritance possible
@@ -379,8 +404,19 @@ person.talk()
     
 - What is the difference between prototypal inheritance and classical inheritance?
   - Prototypal inheritance works through `prototype` object, we put anything that we want others to inherit inside `prototype`
+  - Classical inheritance
+    - 2 concepts:
+      - `class`: drawing design of a house
+      - `instance`: the building itself
+    - You can only live in a house :house: but not the design :framed_picture:
+  - Prototypal inheritance:
+    - No concept of `class`
+    - You build a house :house_with_garden: from an existing house :house:
 
-- What is the constructor OO pattern?
+  ![image](https://user-images.githubusercontent.com/28957748/122389664-5ce00d80-cf9b-11eb-8a3e-b03491b07775.png)
+
+
+- What is the constructor OO pattern (psuedo class)?
   - Create new object by constructor function
   - `new` keyword makes the difference
   ```javascript
@@ -389,7 +425,62 @@ person.talk()
     this.name = name;
     // return this
   }
+  
+  var dog = new Dog('jack');
+  
+  var anotherDog = new Dog('kelly');
+  // var anotherDog = {};
+  Dog.call(anotherDog, 'kelly')
   ```
+  
+  ![image](https://user-images.githubusercontent.com/28957748/122395076-d4fd0200-cfa0-11eb-8315-244dfd06790e.png)
+  
+  - 2 ways of adding methods to objects:
+    ![image](https://user-images.githubusercontent.com/28957748/122396557-4d17f780-cfa2-11eb-9daa-3d4baa1dc672.png)
+
+    - Inject directly to `this` keyword of constructor function
+      - Each object maintains its own methods when object are created. It's memory inefficient.
+
+    ![image](https://user-images.githubusercontent.com/28957748/122397813-8309ab80-cfa3-11eb-9bb7-736112ec2ef9.png)
+
+    - Attach to prototype object of constructor
+      - All objects created by constructor share the same methods
+      - In look-up process, JS first searches on object itself, before climbing up the inheritance tree through `__proto__`
+    
+    ![image](https://user-images.githubusercontent.com/28957748/122396416-2954b180-cfa2-11eb-9838-d373d638a903.png)
+    
+  - Implement Inheritance using __Constructor OO pattern__
+  ```js
+  function Animal(age) {
+    this.age = age;
+  }
+
+  Animal.prototype.sleep = function() {
+      console.log(this, 'zzzz')
+  }
+
+  function Dog(name, age) {
+      Animal.call(this, age);
+      this.name = name;
+  }
+  
+  // Magic line that makes Inheritance works
+  Dog.prototype = Object.create(Animal.prototype);
+  // behind the scene
+  // (1) var dogProto = {};
+  // (2) dogProto.__proto__ = Animal.prototype;
+  // (3) Dog.prototype = dogProto;
+
+  // must put after line above. Otherwise, bark() would be overwritten
+  Dog.prototype.bark = function() { 
+      console.log(this, 'whooop!!!')
+  }
+
+  var dog = new Dog('john', 12);
+  dog.bark()
+  dog.sleep()
+  ```
+
 
 - How do you use the `class` and `extends` keywords?
 ```javascript
