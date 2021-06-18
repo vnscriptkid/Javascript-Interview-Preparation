@@ -171,6 +171,7 @@ console.log(h1`This is a h1 heading`);
   - __(D)__ Function declaration: Move whole upward
   - __(V)__ Variables: Move the declaration only, not assigning value
   - __(E)__ Function expression (like a variable that holds function ref)
+  - `let, const` variables are not hoisted
   
   ```js
   // What will be the output of first console.log in the code below?
@@ -498,28 +499,141 @@ class Dog extends Animal {
 ## Asynchronous Programming
 - What is a callback?
   - Callback is a function that is passed to another function as argument, and is called by that function
-  - Not every callback is async, it's up to the caller
+  - Not every callback is async, it's up to the caller. Give an example
+  ```js
+  function runCb(cb) { cb() }
+  
+  runCb(() => console.log(name));
+  
+  let name = 'thanh'; // let is not hoisted
+  ```
   - Example of async callback: User.findById(id, function(user) { ... })
     - Run the callback after getting back user from db (some point in the future)
+  - Handling errors in callback pattern:
+    - Error-first callbacks: First param of param is `err`
 
 - What is callback hell?
-  - Nested multiple callbacks
+  - Nested multiple callbacks, that is hard to read and know execution order.
 
 - What are promises?
-  - Same nature as callback, but with more clear syntax, avoid callback hell
+  - Same nature as callback, but with more clear syntax and looks linear, avoid callback hell
   - Promise hell
+  - 2 ways Handling errors in promise
+    - for specific `then()`
+    - central place for handling errors with `catch()`
+  - 2 ways of failing a promise:
+    - throw an error -> get turned to `reject`
+    - reject
+  - Promise is async be default, callback is not
+  - How to clean up: `finally` runs in the end either fails or succeeds
+
+```js
+// one way
+fetchData()
+    .then(
+      data => console.log(data), 
+      err => console.error(err)
+    )
+```
+
+```js
+fetchData()
+  .then(data => console.log(data))
+  .catch(err => console.error(err))
+```
+- Simulate static method in JS: immediately resolved promise
+  - Keep your promise: `Promise.resolve('Done');`
+  - Explain why you failed: `Promise.reject('I failed because ...')`
 
 - How do you chain promises together?
+  - return something from `then()`
+    - data: chain sync to async
+    - another promise: chain async to async
+  - `iPromiseYou.then(() => 'Done 1').then(() => { console.log('Done2' })`
+  - Chaining vs Forking
+    - Chaining: Execute operations sequentially
+    - Forking: Create separate executing flows
+
+    ```js
+    promise = Promise.resolve('done')
+  promise.then((msg) => console.log('Done 1: ', msg))
+  promise.then((msg) => console.log('Done 2: ' + msg))
+    ```
+    
 - What does the `Promise.all` function do?
+  - Use in case we have multiple async tasks run parallel, and we want to wait for all of them to be done
+
 - What is async/await and how is it different from promises?
+  - ES8 feature, that makes your code looks totally synchronous (seems like code run line by line)
+  - Turn non-blocking code to blocking code:
+  - Code is synchronous only when both of these are true:
+    - In the context of that `async` function
+    - Must use `await`
+  ```js
+  function asyncTask() {
+    return Promise.resolve('Done');
+  }
+  ```
+  - Cons of async/await:
+    - Might be bad on performance if it's misused
+      - Example: instead of allowing parallel execution of async tasks (Promise.all), we may force it to run sequentially
+
+  - Pros:
+    - Easy to read
+  
+  // IIFE
+  ```js
+  (async () => {
+      const value = await asyncTask();
+      console.log('Value: ', value);
+      console.log('After that.');
+  })();
+  ```
+
+- Mix between async and promise:
+```js
+var asyncFunction = async function() {
+  return "done";
+};
+
+// async function actually returns a promise so that we can chain `then` on
+asyncFunction().then(v => console.log(v));
+```
 
 ## Networking
 - What is CORS?
-  - Browser security mechanism when detecting request to another domain || same domain but another port
-  - Before taking that route, Browser sends a preflight asking server if it should do that
+  - Stands for __Cross Origin Resource Sharing__
+  - Browser has security mechanism to detect requests to another domain || same domain but another port and blocks response not the request
+  - What problem does the security policy solve?
+    - Prevent using data (retrive & manipulate) from a source (server) when you don't have permission from them yet.
+  - CORS is a way to break that security policy
+    - Server selectively choose who can have access to them
+  - How it occurs?
+    - For testing: http://client.cors-api.appspot.com/client
+    - GET:
+      - Req from browser to server foo.com: GET { Origin: moo.com }
+      - Res from server foo.com: { Access-Control-Allow-Origin: moo.com || * }
+    - POST, PUT, DELETE:
+      - The kinds that change data on server. So browser might want to block the request before it changes something on server without permission
+      - Browser first sends a preflight req to ask for permission first
+    ![image](https://user-images.githubusercontent.com/28957748/122514038-759d0180-d035-11eb-9d30-a36f1836611b.png)
 
 - What is JSONP?
+  - Solve the same problems that CORS solves
+  - Works only with GET, not PUT, POST, DELETE
+  - It's like you are tricking browsers, pretending like you are loading an js file but not making ajax requests
 
 ## Events
 - What is the difference between event capturing and event bubbling?
+  ![image](https://user-images.githubusercontent.com/28957748/122516564-1e992b80-d039-11eb-959e-d36823a6d3df.png)
+  
+  - By default, element will listen to events on bubbling phase
+  - How to listen to event capturing instead:
+  - ele.addEventListener('click', function() { ... }, true)
+
 - What is the difference between `stopPropagation` and `preventDefault`?
+  - Events traverse 2 phases in sync way, it must wait for a handler finishes his job before moving to the next element 
+  - `stopPropagation` will stop event move to next element either in event capturing phase or event bubbling phase
+  - `preventDefault` stops the normal effect that the event has on element, doesn't stop the event from propagating.
+    - click on checkbox: box is not ticked
+    - click form submit: ajax request is not sent
