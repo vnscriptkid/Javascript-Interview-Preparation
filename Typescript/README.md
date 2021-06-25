@@ -51,7 +51,7 @@ export default Parent;
   ```
 
 #### :three: Type inference with state
-- Typescript tries to guess types of states:
+- Typescript tries to guess type of state based on initial value
 ```js
 const [name, setName] = useState('');
 // easy! it's a string
@@ -82,4 +82,63 @@ const SearchGuest: React.FC = () => {
     }
     // ...
 }
+```
+
+#### :five: Type inference is only applied for inline event handlers (but not handlers defined ahead of time)
+- `Parameter 'event' implicitly has an 'any' type.ts(7006)`
+```js
+const onInputChange = (event) => {
+    setTerm(event.target.value)
+}
+// TS: i'll do type inference from top to bottom! till now you don't give me any clue about event. So I'll leave it any
+
+// ...
+<input value={term} onChange={onInputChange} />
+```
+
+- Let's fix it
+```js
+const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTerm(event.target.value)
+}
+```
+
+#### :six: TS with class-based components
+```js
+interface Guest {
+    name: string,
+    age: number
+}
+
+interface SearchGuestProps {
+    guests: Guest[]
+}
+
+interface SearchGuestState {
+    term: string,
+    guest: Guest | undefined
+}
+
+class SearchGuest extends Component<SearchGuestProps> {
+    state: SearchGuestState = {
+        term: '',
+        guest: undefined
+    }
+    // ...
+}
+```
+
+#### :seven: Applying Types to Refs
+```js
+// ref to what?
+const inputRef = useRef<HTMLInputElement | null>(null);
+    
+useEffect(() => {
+    if (!inputRef.current) return;
+    inputRef.current.focus();
+}, []);
+
+return (
+    <input ref={inputRef}/>
+)
 ```
