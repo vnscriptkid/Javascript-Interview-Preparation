@@ -2,6 +2,8 @@
 
 ## Webpack as bundler
 
+![image](https://user-images.githubusercontent.com/28957748/123500011-0b074980-d665-11eb-95ea-cf3673fd8876.png)
+
 ```js
 // src/message.js
 const message = "Hello Thanh";
@@ -55,3 +57,7 @@ console.log(message);
   })();
 })();
 ```
+
+## Final flow
+
+![image](https://user-images.githubusercontent.com/28957748/123500171-435b5780-d666-11eb-836f-4f4e371112f0.png)
