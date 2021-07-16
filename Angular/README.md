@@ -5,3 +5,8 @@
 ```console
 npm install -g @angular/cli
 ```
+
+## Create new app
+```console
+ng new my-app
+```
