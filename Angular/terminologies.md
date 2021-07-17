@@ -67,3 +67,26 @@
 ```js
 @Input() drink = '';
 ```
+
+## Pipes
+- https://angular.io/api/common#pipes
+- Format data in template
+
+:one: `nguyen trung thanh` => `Nguyen Trung Thanh`
+```html
+<p>{{ fullName | titlecase }}</p>
+```
+:two: `20-12-1992` => `Dec 20, 1992`
+```html
+<p>{{ date | date:'MMM d, y' }}</p>
+```
+
+:three: `12.199` => `$12.20`
+```html
+<p>{{ amount | currency }}</p>
+```
+
+:four: obj => dump (for debug)
+```html
+<p>{{ obj | json }}</p>
+```
