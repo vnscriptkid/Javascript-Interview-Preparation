@@ -95,3 +95,9 @@
 ```console
 ng generate pipe my-pipe
 ```
+
+#### ⭐ Chaining pipes
+```html
+<p> {{ data | mypipe | number:'1.0-2' }}
+<!-- {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits} -->
+```
