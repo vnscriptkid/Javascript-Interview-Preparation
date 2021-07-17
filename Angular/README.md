@@ -19,3 +19,8 @@ ng new my-app
 
 ## Deployment
 https://vercel.com/
+
+## Create new component
+```console
+ng generate component my-component
+```
