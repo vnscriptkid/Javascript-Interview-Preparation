@@ -90,3 +90,8 @@
 ```html
 <p>{{ obj | json }}</p>
 ```
+
+:five: custom
+```console
+ng generate pipe my-pipe
+```
