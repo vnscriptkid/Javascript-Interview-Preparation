@@ -24,3 +24,7 @@ https://vercel.com/
 ```console
 ng generate component my-component
 ```
+
+## Types declaration file
+* ⚠️ `Could not find a declaration file for module 'faker'`
+* ✔️ `yarn add @types/faker --dev`
