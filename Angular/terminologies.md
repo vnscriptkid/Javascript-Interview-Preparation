@@ -14,6 +14,8 @@
 ```html
 <input [value]="password" type="text" />
 ```
+#### 🆚 Static Property
+![image](https://user-images.githubusercontent.com/28957748/126030006-fd763846-d052-4998-9b30-3ec0d72f5111.png)
 
 ## Interpolation
 ```html
