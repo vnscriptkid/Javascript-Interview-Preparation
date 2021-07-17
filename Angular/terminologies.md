@@ -31,7 +31,7 @@
 
 ```html
 <app-card 
-  *ngFor="let post of posts"
+  *ngFor="let post of posts; let i = index;"
   [title]="post.title" 
   [username]="post.username" 
   [imageUrl]="post.imageUrl" 
