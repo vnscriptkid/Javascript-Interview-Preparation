@@ -2,6 +2,8 @@
 - Load what is needed first, don't load everything
 - Improve performance
 
+![image](https://user-images.githubusercontent.com/28957748/126061925-f0160921-3568-441f-8af6-6c879e89ca9d.png)
+
 ## How?
 #### :one: Prevent `ElementsModule` being imported from `AppModule`
 ```js
