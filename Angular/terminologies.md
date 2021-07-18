@@ -51,13 +51,13 @@
 }
 ```
 
-
 ## Components
 - Represents a independent piece of UI
 - Has __data__ and __behaviors__
 - Can be reused
 
 ## Parent passing data to Children
+#### Approach 1: Through `Input()`
 - :one: From __parent__ side: Passing data down to child through __property binding__
 ```html
 <my-child [drink]="getDrink()"></my-child>
@@ -66,6 +66,19 @@
 - :two: From __child__ side: Receive data through `@Input` decorator
 ```js
 @Input() drink = '';
+```
+#### Approach 2: Through `<ng-content>` (like `children` in React)
+- :one: From __parent side__:
+```html
+<app-divider>Placeholder Component</app-divider>
+```
+
+- :two: From __child side__:
+```html
+<h1>
+    <ng-content></ng-content>
+</h1>
+<div class="ui divider"></div>
 ```
 
 ## Pipes
