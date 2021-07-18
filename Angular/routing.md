@@ -18,3 +18,19 @@
 ```html
 <a class="item" routerLink="/elements" routerLinkActive="active">Elements</a>7
 ```
+
+## Order of importing modules matters
+```js
+@NgModule({
+  imports: [
+    BrowserModule,
+    CollectionsModule,
+    ElementsModule,
+    AppRoutingModule,
+  ],
+})
+export class AppModule { }
+```
+
+![image](https://user-images.githubusercontent.com/28957748/126058295-14cf4b4f-db9b-4141-a2f4-e7fe6b36c9ef.png)
+
