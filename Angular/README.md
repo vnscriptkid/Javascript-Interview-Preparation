@@ -18,11 +18,11 @@ yarn add bootstrap
 yarn add semantic-ui-css
 ```
 
-```js
+```css
 // src/styles.css
 @import "bulma/css/bulma.css";
 @import "bootstrap/dist/css/bootstrap.css";
-@import 'semantic-ui-css/semantic.css';
+@import "semantic-ui-css/semantic.css";
 ```
 
 ## Deployment
