@@ -1,6 +1,12 @@
 ## Basic routing
+```js
+const routes: Routes = [
+  { path: 'collections', component: CollectionsHomeComponent }
+];
+```
 
 ## `<router-outlet>`
+- Where routing logic happens, to decices what content to render based on url
 
 ## `routerLink` client routing
 - 🚫 Full reload
