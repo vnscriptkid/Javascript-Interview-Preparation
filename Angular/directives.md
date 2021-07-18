@@ -73,8 +73,8 @@ ng generate directive times
 
 #### Think of API
 ```html
-<ul *appTimes="5">
-    <li>repeated item</li>
+<ul *appTimes="5; let i = index;">
+    <li>repeated item {{ i + 1 }}</li>
 </ul>
 ```
 
@@ -93,7 +93,7 @@ export class TimesDirective {
     this.viewContainer.clear();
 
     for (let i = 0; i < times; i++) {
-      this.viewContainer.createEmbeddedView(this.templateRef, {});
+      this.viewContainer.createEmbeddedView(this.templateRef, { index: i });
     }
   }
 }
