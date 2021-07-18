@@ -12,9 +12,17 @@ ng new my-app
 ```
 
 ## Import 3rd-party CSS
+```console
+yarn add bulma
+yarn add bootstrap
+yarn add semantic-ui-css
+```
+
 ```js
 // src/styles.css
 @import "bulma/css/bulma.css";
+@import "bootstrap/dist/css/bootstrap.css";
+@import 'semantic-ui-css/semantic.css';
 ```
 
 ## Deployment
