@@ -33,3 +33,51 @@
 }
 ```
 
+## Build a generic table component
+#### Decides API
+```html
+<app-table class="celled striped" [data]="data" [headers]="headers"></app-table>
+```
+
+```js
+data: any = [
+    { name: 'Thanh', age: 26, job: 'Software Engineer' },
+    { name: 'Bich', age: 29, job: 'Laywer' },
+    { name: 'Hoa', age: 25, job: 'Data Analyst' },
+    { name: 'Linh', age: 20, job: 'Student' },
+];
+
+headers: any = [
+    { title: 'Name', key: 'name' },
+    { title: 'Age', key: 'age' },
+    { title: 'Job', key: 'job' },
+]
+```
+
+#### Receives input passed down
+```js
+export class TableComponent {
+
+  @Input('class') classNames = '';
+  @Input() data: any;
+  @Input() headers: any;
+
+  constructor() { }
+}
+```
+
+#### Implement render logic in template
+```html
+<table class="ui table" [ngClass]="classNames">
+    <thead>
+        <tr>
+            <th *ngFor="let item of headers; let i = index;">{{ item.title }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of data; let i = index;">
+            <td *ngFor="let header of headers">{{ record[header.key] }}</td>
+        </tr>
+    </tbody>
+</table>
+```
