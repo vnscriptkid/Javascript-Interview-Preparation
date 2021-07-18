@@ -1,3 +1,6 @@
+## Structural directives
+- Change the structure of html by adding or removing elements from dom
+
 ## `*ngFor`
 
 ## `*ngIf`
@@ -57,6 +60,40 @@ customDirective.backgroundColor = 'green';
       this.ele.nativeElement.classList.add(className);
     } else {
       this.ele.nativeElement.classList.remove(className);
+    }
+  }
+}
+```
+
+## Rebuild `*ngFor`
+#### Generate new directive
+```console
+ng generate directive times
+```
+
+#### Think of API
+```html
+<ul *appTimes="5">
+    <li>repeated item</li>
+</ul>
+```
+
+#### Implement it
+```js
+import { Directive, ViewContainerRef, TemplateRef, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appTimes]'
+})
+export class TimesDirective {
+
+  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<any>) {}
+
+  @Input('appTimes') set render(times: number) {
+    this.viewContainer.clear();
+
+    for (let i = 0; i < times; i++) {
+      this.viewContainer.createEmbeddedView(this.templateRef, {});
     }
   }
 }
