@@ -27,5 +27,8 @@ export class ElementsModule { }
 export class AppModule { }
 ```
 
+## Types of modules
+![image](https://user-images.githubusercontent.com/28957748/126056265-4be34389-8b91-4478-897f-b2bc36dad649.png)
+
 ## Module property definitions
 ![image](https://user-images.githubusercontent.com/28957748/126056010-9a5ae586-92ec-436e-8f51-c2de0b8146f9.png)
