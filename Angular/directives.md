@@ -1,5 +1,6 @@
-## Structural directives
-- Change the structure of html by adding or removing elements from dom
+## Directives
+* Structural directive: Change the structure of html by adding or removing elements from dom
+* Attribute: Change styles of html elements
 
 ## `*ngFor`
 
