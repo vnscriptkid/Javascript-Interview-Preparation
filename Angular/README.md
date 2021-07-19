@@ -1,5 +1,6 @@
 ## VsCode Addons
 - Angular Language Service
+- Angular Snippets (John Papa)
 
 ## Angular CLI
 ```console
@@ -23,6 +24,10 @@ yarn add semantic-ui-css
 @import "bulma/css/bulma.css";
 @import "bootstrap/dist/css/bootstrap.css";
 @import "semantic-ui-css/semantic.css";
+```
+
+```console
+ng add ngx-bootstrap
 ```
 
 ## Deployment
