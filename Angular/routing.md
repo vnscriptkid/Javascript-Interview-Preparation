@@ -9,13 +9,19 @@ const routes: Routes = [
 - Where routing logic happens, to decices what content to render based on url
 
 ## `routerLink` client routing
-- 🚫 Full reload
+* 🚫 Full reload
 ```html
 <a href="/elements">Elements</a>
 ```
-- ✔️ Client side work
+* ✔️ Client side work
 ```html
 <a routerLink="/elements">Elements</a>
+```
+
+* :star: `routerLink` is relative path
+#### `/currentPath` ➕ `./` 👉 `/currentPath`
+```html
+<a class="item" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
 ```
 
 ## Active link
