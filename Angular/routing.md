@@ -8,6 +8,15 @@ const routes: Routes = [
 ## `<router-outlet>`
 - Where routing logic happens, to decices what content to render based on url
 
+## 2 ways to trigger client-routing
+* Click link with `routerLink` prop
+* In code, when something happens:
+```js
+import { Router } from '@angular/router';
+// ...
+this.router.navigateByUrl('/somewhere');
+```
+
 ## `routerLink` client routing
 * 🚫 Full reload
 ```html
