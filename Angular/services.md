@@ -19,3 +19,17 @@ export class UserService {
   ...
 })
 ```
+
+## Use case 1: AccountService (handle login and register)
+```js
+export class AccountService {
+
+  baseUrl = 'https://localhost:5001/api/account'
+  
+  constructor(private http: HttpClient) { }
+
+  login(model: any) {
+    return this.http.post(`${this.baseUrl}/login`, model);
+  }
+}
+```
