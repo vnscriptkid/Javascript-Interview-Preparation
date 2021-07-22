@@ -79,3 +79,16 @@ export class CollectionsRoutingModule { }
 <router-outlet></router-outlet> 
 ```
 
+## Get param in url
+* Assuming we're browsing below url
+```js
+{ path: "members/:id", component: MemberDetailComponent }
+```
+* How to extract id from url in any component
+```js
+// Inject ActivatedRoute obj at runtime
+constructor(private route: ActivatedRoute) { }
+
+// Get it
+const id = this.route.snapshot.paramMap.get('id');
+```
