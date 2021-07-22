@@ -7,8 +7,9 @@
 ```console
 ng g interceptor _interceptors/error
 ```
-* intercept
+* Intercept response coming in
 ```js
+// src/app/_interceptors/error.interceptor.ts
 intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
       .pipe(
@@ -51,4 +52,30 @@ intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEven
 providers: [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
 ],
+```
+
+## Use case 2: Inject jwt token to headers of request
+```js
+// src/app/_interceptors/jwt.interceptor.ts
+@Injectable()
+export class JwtInterceptor implements HttpInterceptor {
+
+  constructor(private accountService: AccountService) {}
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    let currentUser: User;
+
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => currentUser = user);
+    
+    if (currentUser) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.token}`
+        }
+      })
+    }
+    
+    return next.handle(request);
+  }
+}
 ```
