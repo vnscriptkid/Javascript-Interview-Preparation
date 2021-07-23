@@ -56,3 +56,11 @@ const routes: Routes = [
   { path: "member/edit", component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard] }
 ];
 ```
+
+#### ⚠️ Gotchas: Above solution works fine as user navigating inside application, not prevent closing tab or browsing another url
+```js
+@HostListener('window:beforeunload', ['$event'])
+notifyUnsavedChangesIfAny($event: any) {
+  if (this.editForm.dirty) $event.returnValue = true;
+}
+```
