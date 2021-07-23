@@ -1,4 +1,4 @@
-## Use case 1: Error handling
+## Use case 1: Error handling (after getting response)
 * Idea: Intercept errors coming from server
   * Process in some ways
   * Throw out notifications
@@ -54,7 +54,7 @@ providers: [
 ],
 ```
 
-## Use case 2: Inject jwt token to headers of request
+## Use case 2: Inject jwt token to headers of request (before sending request)
 ```js
 // src/app/_interceptors/jwt.interceptor.ts
 @Injectable()
@@ -76,6 +76,28 @@ export class JwtInterceptor implements HttpInterceptor {
     }
     
     return next.handle(request);
+  }
+}
+```
+
+## Use case 3: Show loading spinner ( 🚀 start when launching request, 🛑 stop after receiving response)
+
+```js
+// src/app/_interceptors/loading.interceptor.ts
+@Injectable()
+export class LoadingInterceptor implements HttpInterceptor {
+
+  constructor(private busyService: BusyService) {}
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    this.busyService.busy();
+    
+    return next.handle(request).pipe(
+      delay(500),
+      finalize(() => {
+        this.busyService.idle();
+      })
+    );
   }
 }
 ```
