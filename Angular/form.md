@@ -1,3 +1,8 @@
+## 2 types of form:
+#### :one: Template form
+* 2 ways binding
+#### :two: Reactive form 
+
 ## 2 way binding (🍌 box)
 
 ## Use case 1: Login form
@@ -45,4 +50,37 @@ updateInfo() {
   // ...
   this.editForm.reset(this.member);
 }
+```
+
+## HowTo: Reactive Form
+* Register module in `app.module.ts`
+```js
+imports: [
+    ReactiveFormsModule
+],
+```
+* Init form in component
+```js
+registerForm: FormGroup;
+
+ngOnInit(): void {
+  this.initializeForm();
+}
+
+initializeForm() {
+  this.registerForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+    passwordConfirm: new FormControl('')
+  });
+}
+```
+* Make it reactive in html
+```html
+<form [formGroup]="registerForm" (submit)="register()" autocomplete="off">
+  <div class="form-group">
+    <input formControlName="username" type="text" class="form-control" placeholder="Username" />    
+  </div>
+<!--  ...  -->
+</form>
 ```
