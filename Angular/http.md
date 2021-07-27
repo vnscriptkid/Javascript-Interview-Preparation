@@ -15,3 +15,13 @@ return this.http.get<Member[]>(`${this.baseUrl}`, { observe: 'response' }).pipe(
       })
     );
 ```
+
+## HowTo: Pass along Query Param with request
+```js
+const params = {
+  queryNumber: query.page,
+  pageSize: query.itemsPerPage
+}
+
+this.http.get<Member[]>(`${this.baseUrl}`, { observe: 'response', params })
+```
