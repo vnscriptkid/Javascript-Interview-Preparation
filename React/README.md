@@ -1,9 +1,21 @@
 ## Building blocks
-#### Describe UI 🤏
+#### The guy who Describes UI 🤏
 ```js
 import React from 'react';
 ```
-#### Render to DOM 🖼️
+#### The guy who Renders to DOM 🖼️
 ```js
 import ReactDOM from 'react-dom';
+```
+#### React Element
+```js
+const reactElement = <div>hello</div>;
+```
+#### DOM element
+```js
+const domElement = document.getElementById('root');
+```
+#### Bring all together
+```js
+ReactDOM.render(reactElement, domElement);
 ```
