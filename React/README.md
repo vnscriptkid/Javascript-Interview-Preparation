@@ -25,3 +25,16 @@ const domElement = document.getElementById('root');
 ```js
 ReactDOM.render(reactElement, domElement);
 ```
+
+## 🏗️ React Component
+* Compose elements with behaviors inside a function
+* Why? Reusable, Customize component by receiving params
+
+## 🚸 React Children
+* What?
+  * Special props
+  * Passing by __position__ not by __name__ (though it can be)
+* How ?
+```js
+<AppButton style={{ color: 'red' }}>Submit</AppButton>
+```
