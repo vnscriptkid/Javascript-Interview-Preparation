@@ -59,3 +59,11 @@ useEffect(() => {
   - ✔️ Save data to local? Perfect
   - ✔️ Play a sound ? Awesome
   - ✔️ Adjust scroll
+- When side-effect does not happen?
+```js
+const first20Chars = message.substr(0, 20);
+useEffect(() => {
+  // do something
+}, [first20Chars])
+```
+👉 Side effects do not happen when message is longer than 20 chars ( 😸 performance gains as we save function calls)
