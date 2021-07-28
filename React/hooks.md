@@ -74,3 +74,13 @@ useEffect(() => {
   // do something
 })
 ```
+- Run only __first render__:
+```js
+useEffect(() => {
+  // do something
+}, [])
+// why: React try to compare the array between renders. 
+// And run side-effect only when that array changes
+// but in this case, array is empty so never run twice
+```
+
