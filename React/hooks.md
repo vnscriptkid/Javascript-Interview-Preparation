@@ -86,3 +86,4 @@ useEffect(() => {
 - What to put inside `[ ]`
 👉 Things inside side-effect function
 
+- Custom useEffect hook is a way to compose __states__ and __behaviors__ 
