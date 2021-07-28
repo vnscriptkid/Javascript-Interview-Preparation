@@ -10,6 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 ```
 #### React Element
+* An JS object that describes UI
 ```js
 const reactElement = <div>hello</div>;
 ```
@@ -56,3 +57,9 @@ ReactDOM.render(reactElement, domElement);
 * Describe what to do but not how to do it?
 * Opposite to 👷‍♂️ __Imperative__ (Jquery)
 * At state X then display Y
+
+## 🚀 Why React fast?
+- Update UI in a performent way by finding 🔡 the exact diff between last render, 😄 so that minimum update is made
+```js
+const diff = compare(oldElement, newElement)
+```
