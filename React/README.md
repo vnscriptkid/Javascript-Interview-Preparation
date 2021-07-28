@@ -15,6 +15,7 @@ const reactElement = <div>hello</div>;
 ```js
 const reactElement = React.createElement("div", { style: { color: red } }, "hello there");
 ```
+* Curly braces `{}` in JSX means go back to JS
 
 #### DOM element
 ```js
