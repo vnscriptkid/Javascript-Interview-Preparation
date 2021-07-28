@@ -67,3 +67,10 @@ useEffect(() => {
 }, [first20Chars])
 ```
 👉 Side effects do not happen when message is longer than 20 chars ( 😸 performance gains as we save function calls)
+
+- Run on __every render__:
+```js
+useEffect(() => {
+  // do something
+})
+```
