@@ -59,6 +59,12 @@ ReactDOM.render(reactElement, domElement);
 * At state X then display Y
 * We do not directly change the DOM, React do it for us
 * We define states and describe how UI should look like for each state
+```js
+// states
+const [error, setError] = useState(null);
+// render
+{error && <span className="error">error</span>}
+```
 * As we change state, React handle updating UI for us
 
 ## 🚀 Why React fast?
