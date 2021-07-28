@@ -57,6 +57,8 @@ ReactDOM.render(reactElement, domElement);
 * Describe what to do but not how to do it?
 * Opposite to 👷‍♂️ __Imperative__ (Jquery)
 * At state X then display Y
+* We do not directly change the DOM, React do it for us
+* We define states and describe how UI should look like for each state
 
 ## 🚀 Why React fast?
 - Rendering
