@@ -27,7 +27,7 @@ ReactDOM.render(reactElement, domElement);
 ```
 
 ## 🏗️ React Component
-* Compose elements with behaviors inside a function
+* Compose __elements__ with __behaviors__ inside a function
 * Why? Reusable, Customize component by receiving params
 
 ## 🚸 React Children
@@ -45,3 +45,6 @@ ReactDOM.render(reactElement, domElement);
 ```js
 <AppButton onClick={() => console.log('Clicked');}></AppButton>
 ```
+```js
+// When new post form succeeds, give me the post
+<NewPostForm onSuccess={(post) => console.log(post);}></NewPostForm>
