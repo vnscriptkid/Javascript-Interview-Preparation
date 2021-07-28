@@ -38,3 +38,10 @@ ReactDOM.render(reactElement, domElement);
 ```js
 <AppButton style={{ color: 'red' }}>Submit</AppButton>
 ```
+
+## ♈ Data Flow
+* React is one-way data flow
+* How to communicate backward: passing a callback down
+```js
+<AppButton onClick={() => console.log('Clicked');}></AppButton>
+```
