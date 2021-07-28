@@ -63,3 +63,6 @@ ReactDOM.render(reactElement, domElement);
 ```js
 const diff = compare(oldElement, newElement)
 ```
+
+## ⚓ How to React
+* Think in state first
