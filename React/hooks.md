@@ -41,3 +41,14 @@ if (minutes < 4) {
 - Have direct access to DOM node through: `ref.current`
 - Imperative way to change UI
 
+## useEffect
+* `Effect` here means __side effects__
+```js
+// whenever message changes, we want to do something (side effect)
+useEffect(() => {
+  // do something
+}, [message])
+```
+- 2 cases:
+    - :one: Initial load
+    - :two: whenever message changes
