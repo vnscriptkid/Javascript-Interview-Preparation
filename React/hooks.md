@@ -41,7 +41,7 @@ if (minutes < 4) {
 - Have direct access to DOM node through: `ref.current`
 - Imperative way to change UI
 
-## useEffect
+## useEffect (Think in events 🥳)
 * `Effect` here means __side effects__
 ```js
 // whenever message changes, we want to do something (side effect)
@@ -52,3 +52,10 @@ useEffect(() => {
 - 2 cases:
     - :one: Initial load
     - :two: whenever message changes
+
+- What might be the side-effects:
+  - 🛑 Upload UI ? Hmmm, you can but that's probably React's work (__Think in state__ 🗽)
+  - ✔️ Fetch data ? Yes
+  - ✔️ Save data to local? Perfect
+  - ✔️ Play a sound ? Awesome
+  - ✔️ Adjust scroll
