@@ -50,3 +50,9 @@ ReactDOM.render(reactElement, domElement);
 ```js
 // When new post form succeeds, give me the post
 <NewPostForm onSuccess={(post) => console.log(post);}></NewPostForm>
+```
+
+## 🚡 Declarative
+* Describe what to do but not how to do it?
+* Opposite to 👷‍♂️ __Imperative__ (Jquery)
+* At state X then display Y
