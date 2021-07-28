@@ -59,6 +59,13 @@ ReactDOM.render(reactElement, domElement);
 * At state X then display Y
 
 ## 🚀 Why React fast?
+- Rendering
+```js
+// first render
+const oldElement = MyComponent();
+// second render
+const newElement = MyComponent();
+```
 - Update UI in a performent way by finding 🔡 the exact diff between last render, 😄 so that minimum update is made
 ```js
 const diff = compare(oldElement, newElement)
