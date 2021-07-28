@@ -83,4 +83,6 @@ useEffect(() => {
 // And run side-effect only when that array changes
 // but in this case, array is empty so never run twice
 ```
+- What to put inside `[ ]`
+👉 Things inside side-effect function
 
