@@ -1,3 +1,5 @@
+# React = 🏗️ Composable + 🚡 Declarative
+
 ## 🧱 Building blocks
 #### The guy who Describes UI 🤏
 ```js
