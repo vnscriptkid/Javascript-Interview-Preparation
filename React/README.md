@@ -1,4 +1,4 @@
-## Building blocks
+## 🧱 Building blocks
 #### The guy who Describes UI 🤏
 ```js
 import React from 'react';
@@ -11,6 +11,11 @@ import ReactDOM from 'react-dom';
 ```js
 const reactElement = <div>hello</div>;
 ```
+* React is just bunch of JS: JSX -> JS
+```js
+const reactElement = React.createElement("div", { style: { color: red } }, "hello there");
+```
+
 #### DOM element
 ```js
 const domElement = document.getElementById('root');
