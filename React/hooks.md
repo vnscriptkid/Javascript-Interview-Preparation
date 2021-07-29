@@ -107,4 +107,7 @@ useEffect(() => {
     }
   }, [uid])
   ```
-   
+* Best practice
+  - Do clean up for side-effect
+  - Do not use sideEffect conditionally
+  - Do not use async for sideEffect, use Promise instead (if you really want, wrap inside IIFE)
