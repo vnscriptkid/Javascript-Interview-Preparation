@@ -95,6 +95,7 @@ useEffect(() => {
     - Boom! Memory leak
   - Solution
   ```js
+  const [user, setUser] = useState(null);
   useEffect(() => {
     let isMounted = true
 
@@ -106,6 +107,12 @@ useEffect(() => {
       isMounted = false
     }
   }, [uid])
+  // 1. Initializing state
+  // 2. Set up subscription
+  // 3. Clean up the subscription
+  // 4. When the uid changes:
+  //  - clean up the supscription
+  //  - setup a new subscription
   ```
 * Best practice
   - Do clean up for side-effect
