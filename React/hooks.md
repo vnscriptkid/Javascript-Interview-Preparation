@@ -87,3 +87,24 @@ useEffect(() => {
 👉 Things inside side-effect function
 
 - Custom useEffect hook is a way to compose __states__ and __behaviors__ 
+- Potential memory leak
+  - When it happens?
+    - Component fetch data from api
+    - Component get unmounted
+    - Data comes back from api, run setState on unmounted component
+    - Boom! Memory leak
+  - Solution
+  ```js
+  useEffect(() => {
+    let isMounted = true
+
+    fetchUser(uid).then(user => {
+      if (isMounted) setUser(user)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [uid])
+  ```
+   
