@@ -27,7 +27,5 @@ class UserPosts extends React.Component {
 ```js
 const [posts, setPosts] = useState(null);
 
-useEffect(() => {
-  return subscribeToPosts(uid, posts => setPosts(posts));
-}, [uid])
+useEffect(() => subscribeToPosts(uid, posts => setPosts), [uid])
 ```
