@@ -25,16 +25,11 @@ class UserPosts extends React.Component {
 ```
 #### Convert to hook-style
 ```js
-const [user, setUser] = useState(null);
+const [posts, setPosts] = useState(null);
+
 useEffect(() => {
-  let isMounted = true
-
-  fetchUser(uid).then(user => {
-    if (isMounted) setUser(user)
-  })
-
-  return () => {
-    isMounted = false
-  }
+  const unsub = subscribeToPosts(uid, posts => setPosts(posts));
+  
+  return unsub;
 }, [uid])
 ```
