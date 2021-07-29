@@ -82,3 +82,7 @@ const diff = compare(oldElement, newElement)
 
 ## ⚓ How to React
 * Think in state first
+
+## When rendering happens?
+* :one: Receive new props 📞
+* :two: State changes 💱
