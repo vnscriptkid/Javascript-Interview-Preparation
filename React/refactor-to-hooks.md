@@ -1,5 +1,5 @@
 ## Use Case 1
-#### Class-based approach
+#### Class-based approach using `Render Props Pattern`
 ```js
 class UserPosts extends React.Component {
   state = { posts: [] }
@@ -28,8 +28,6 @@ class UserPosts extends React.Component {
 const [posts, setPosts] = useState(null);
 
 useEffect(() => {
-  const unsub = subscribeToPosts(uid, posts => setPosts(posts));
-  
-  return unsub;
+  return subscribeToPosts(uid, posts => setPosts(posts));
 }, [uid])
 ```
