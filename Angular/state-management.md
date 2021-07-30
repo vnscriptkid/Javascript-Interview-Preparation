@@ -21,3 +21,25 @@ export class MemberService {
   }
 }
 ```
+
+## Caching data with params
+* Client should be able to remember data associated with a set of params
+![image](https://user-images.githubusercontent.com/28957748/127664486-0ddcf686-6e9c-40ba-a299-63c7eb7f0c66.png)
+
+* Use a map to store data in key-value pairs
+```js
+memberCache = new Map();
+
+getUsers(params: UserParams) {
+  const key = Object.values(params).join('-');
+  
+  if (this.memberCache.has(key)) return of(this.memberCache.get(key));
+
+  return this.getPaginatedResult<Member[]>(params)
+    .pipe(map(response => {
+      this.memberCache.set(key, response);
+
+      return response;
+    }));
+}
+```
