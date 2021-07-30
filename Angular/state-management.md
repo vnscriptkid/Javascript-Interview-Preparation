@@ -1,4 +1,7 @@
 ## Solution 1: Using service to store data
+- Why service ? Why not storing in component itself?
+  - Service in angular is singleton
+  - Data stored in component get lost after component is unmounted
 ```js
 export class MemberService {
   baseUrl = `${environment.apiUrl}/users`;
