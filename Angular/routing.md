@@ -111,7 +111,7 @@ ngOnInit(): void {
 - Common sense: Fetch async data in `ngOnInit`
 - Alternative: get data before navigating to the new route using `resolver`
 
-* Fetch data in resolver first
+##### :one: Fetch data in resolver first
 ```js
 export class NewsResolver implements Resolve<any> {
   constructor(private newsService: NewsService) {}
@@ -122,7 +122,7 @@ export class NewsResolver implements Resolve<any> {
 }
 ```
 
-* Access data in component through `route`
+##### :two: Access data in component through `route`
 ```js
 @Component({ ... })
 export class TopComponent implements OnInit {
