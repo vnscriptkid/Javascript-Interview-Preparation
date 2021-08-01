@@ -106,3 +106,32 @@ ngOnInit(): void {
   });
 }
 ```
+
+## Route resolver
+- Common sense: Fetch async data in `ngOnInit`
+- Alternative: get data before navigating to the new route using `resolver`
+
+* Fetch data in resolver first
+```js
+export class NewsResolver implements Resolve<any> {
+  constructor(private newsService: NewsService) {}
+
+  resolve(): Observable<any> {
+    return this.newsService.getTopPosts();
+  }
+}
+```
+
+* Access data in component through `route`
+```js
+@Component({ ... })
+export class TopComponent implements OnInit {
+  data: any;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.data = this.route.snapshot.data;
+  }
+}
+```
