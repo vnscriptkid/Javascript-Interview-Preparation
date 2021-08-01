@@ -14,7 +14,10 @@
 ## `ViewChild()`
 * query a single DOM element from the DOM tree and lets you manipulate it
 ```js
+// in template
 <my-custom-component #reference></my-custom-component>
-
+// in component
 @ViewChild('reference') myComponent;
 ```
+
+* __ViewChild Returning undefined__: use the value, before the ViewChild initializes it
