@@ -10,3 +10,11 @@
 * :three: 🧗 Climb up the component tree, until root `ElementInjector`
 * :four: 👓 looks for the Dependency in the `ModuleInjector`
 * :five: ☠️ Throw an error
+
+## `ViewChild()`
+* query a single DOM element from the DOM tree and lets you manipulate it
+```js
+<my-custom-component #reference></my-custom-component>
+
+@ViewChild('reference') myComponent;
+```
