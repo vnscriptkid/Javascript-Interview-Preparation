@@ -92,3 +92,17 @@ constructor(private route: ActivatedRoute) { }
 // Get it
 const id = this.route.snapshot.paramMap.get('id');
 ```
+
+## Inject && Retrieve Query Params
+* In html view
+```html
+<button routerLink="/members/{{ member.username }}" [queryParams]="{tab: 3}"></button>
+```
+* In destination component
+```js
+ngOnInit(): void {
+  this.route.queryParamMap.subscribe(params => {
+    console.log(params.get('tab'));
+  });
+}
+```
