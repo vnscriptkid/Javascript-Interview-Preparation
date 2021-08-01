@@ -20,4 +20,8 @@
 @ViewChild('reference') myComponent;
 ```
 
-* __ViewChild Returning undefined__: use the value, before the ViewChild initializes it
+* 🛑 __ViewChild Returning undefined__: use the value, before the ViewChild initializes it
+* ✔️ `ngAfterViewInit`
+
+* 🛑 `ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked`
+* ✔️ ``
