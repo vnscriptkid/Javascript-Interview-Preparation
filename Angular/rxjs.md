@@ -4,7 +4,7 @@
 ## BehavioralSubject
 - __What__: Requires an __initial value__ and emits the __current value__ to new subscribers
 
-#### Use case: Current status of user (online or offline)
+#### :one: Use case: Current status of user (online or offline)
 * __Idea__: Subscribers only care about the current status of users
 
 ```js
