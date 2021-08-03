@@ -100,4 +100,4 @@ ObjectDefineProperty(Module, 'wrapper', {
  // your code is appended here
 })
 ```
-=> Here is why you always have access to above global variables inside your code
+=> Here is why you always have access to above global variables inside your code ERMFD
