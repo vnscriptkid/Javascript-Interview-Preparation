@@ -135,3 +135,10 @@ export class TopComponent implements OnInit {
   }
 }
 ```
+
+## ⚠️ Problem with router (navigate to same route)
+* By defaut, when navigating to same route => Angular does nothing
+* Quick fix: No reuse route -> reload it again
+```
+this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+```
