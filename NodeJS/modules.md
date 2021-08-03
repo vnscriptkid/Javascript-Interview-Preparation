@@ -119,7 +119,7 @@ Module._load = function(request, parent, isMain) {
 ```
 ❗❗❗ ⭐ `module.exports` gives the caller a reference of what has been exported
 
-#### Demonstrate module exports a ref but not a copy
+#### Module exports a ref to object being exported, but that object is cached for subsequent requires
 ```js
 // greet.js
 const myObj = {
@@ -132,7 +132,7 @@ const myObj = require("./greet");
 myObj.number += 1;
 console.log(myObj); // 11
 
-const anotherObj = require("./greet");
+const anotherObj = require("./greet"); // hmmm, you requested './greet' once before, i cached it, i'll give it back to you
 anotherObj.number += 1;
 console.log(anotherObj); // 12
 ```
