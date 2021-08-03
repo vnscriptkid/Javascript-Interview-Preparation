@@ -57,3 +57,6 @@ Order of abtraction: Javascript -> C/C++ -> Assembly -> Machine Code
 - Http
 - Req, res (standard format)
 - Work take long time
+
+## Refs
+https://dev.to/khaosdoctor/node-js-under-the-hood-1-getting-to-know-our-tools-1465
