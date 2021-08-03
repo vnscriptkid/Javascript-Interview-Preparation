@@ -30,8 +30,13 @@ Order of abtraction: Javascript -> C/C++ -> Assembly -> Machine Code
   ```
   
   - `src/node_file.cc`
-  ```js
-  static void Read(const FunctionCallbackInfo<Value>& args) {
-  // ...
-  env->SetMethod(target, "read", Read);
+  ```c++
+  namespace node {
+    namespace fs {
+      // ...
+      static void Read(const FunctionCallbackInfo<Value>& args) {
+      // ...
+      env->SetMethod(target, "read", Read);
+    }
+  }
   ```
