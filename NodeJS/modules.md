@@ -15,7 +15,8 @@
 function wrapSafe(filename, content, cjsModuleInstance) {
   if (patched) {
     const wrapper = Module.wrap(content);
-    return vm.runInThisContext(wrapper, {
+    // vm.runInThisContext(code, options)
+    return vm.runInThisContext(wrapper, { // vm.runInThisContext() compiles code, runs it within the context of the current global and returns the result
       filename,
       lineOffset: 0,
       displayErrors: true,
