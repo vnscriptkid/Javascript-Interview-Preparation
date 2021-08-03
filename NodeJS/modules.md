@@ -129,8 +129,9 @@ module.exports = myObj;
 // app.js
 const myObj = require("./greet");
 myObj.number += 1;
-console.log(myObj);
+console.log(myObj); // 11
 
 const anotherObj = require("./greet");
-console.log(anotherObj);
+anotherObj.number += 1;
+console.log(anotherObj); // 12
 ```
