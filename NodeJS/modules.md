@@ -165,7 +165,8 @@ const hello = require("./greet").hello;
 hello();
 ```
 
-### :three: Pattern 3
+#### :three: Pattern 3
+https://derickbailey.com/2016/03/09/creating-a-true-singleton-in-node-js-with-es6-symbols/
 ```js
 // greet.js
 function Hello() {
@@ -183,3 +184,47 @@ const hello = require("./greet");
 
 hello.speak(); // hi there
 ```
+⚠️ __Downside__ of this approach is: object is __cached__, everytime call `require("./greet")`, it returns a __same object__
+
+#### :four: Pattern 4
+```js
+// greet.js
+function Hello() {
+  this.greeting = "hi there";
+
+  this.hello = function () {
+    console.log(this.greeting);
+  };
+}
+
+module.exports = Hello;
+
+// app.js
+const Hello = require("./greet");
+
+const greet = new Hello();
+greet.hello();
+```
+
+#### :five: Pattern 5: Simulate private variable in js
+```js
+// counter.js
+var count = 0;
+
+function add() { count++; }
+
+function getCount() { return count; }
+
+module.exports = { // expose 2 apis, have no direct access to count variable
+  add,
+  getCount,
+};
+
+// app.js
+const counter = require("./counter");
+
+counter.add();
+console.log(counter.getCount()); // `
+```
+
+
