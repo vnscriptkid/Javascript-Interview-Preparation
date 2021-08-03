@@ -21,6 +21,8 @@ Order of abtraction: Javascript -> C/C++ -> Assembly -> Machine Code
 - How __binding__ works
   - `lib/fs.js`: Look up `read()` corresponding to `fs.read()` in nodejs
   ```js
+  const binding = internalBinding('fs');
+  // ...
   function read(fd, buffer, offset, length, position, callback) {
     // ...
     binding.read(fd, buffer, offset, length, position, req);
