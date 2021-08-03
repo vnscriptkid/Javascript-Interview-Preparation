@@ -11,6 +11,7 @@
 - Function expression
 
 ## Understand in Code
+* Look at src code at: `node/lib/internal/modules/cjs/loader.js`
 ```js
 function wrapSafe(filename, content, cjsModuleInstance) {
   if (patched) {
