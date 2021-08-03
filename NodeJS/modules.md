@@ -116,3 +116,21 @@ Module._load = function(request, parent, isMain) {
   return module.exports;
 }
 ```
+❗❗❗ ⭐ `module.exports` gives the caller a reference of what has been exported
+
+#### Demonstrate module exports a ref but not a copy
+```js
+// greet.js
+const myObj = {
+  number: 10,
+};
+module.exports = myObj;
+
+// app.js
+const myObj = require("./greet");
+myObj.number += 1;
+console.log(myObj);
+
+const anotherObj = require("./greet");
+console.log(anotherObj);
+```
