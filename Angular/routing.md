@@ -79,7 +79,7 @@ export class CollectionsRoutingModule { }
 <router-outlet></router-outlet> 
 ```
 
-## Get param in url
+## Get param in url (:star: using `ActivatedRoute`)
 * Assuming we're browsing below url
 ```js
 { path: "members/:id", component: MemberDetailComponent }
