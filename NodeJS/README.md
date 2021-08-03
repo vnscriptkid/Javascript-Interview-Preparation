@@ -42,3 +42,6 @@ Order of abtraction: Javascript -> C/C++ -> Assembly -> Machine Code
     }
   }
   ```
+
+## Why NodeJS
+- Fulltack of JS
