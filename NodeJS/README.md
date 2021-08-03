@@ -46,7 +46,7 @@ Order of abtraction: Javascript -> C/C++ -> Assembly -> Machine Code
 ## Why NodeJS
 - Fulltack of JS
 
-## NodeJS = JS + Features X
+## NodeJS = JS (ECMAScript Specification) + Features X
 - Organize code (require, module.exports)
 - Files
 - Databases
