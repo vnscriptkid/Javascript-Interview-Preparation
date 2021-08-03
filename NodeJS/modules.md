@@ -136,3 +136,50 @@ const anotherObj = require("./greet"); // hmmm, you requested './greet' once bef
 anotherObj.number += 1;
 console.log(anotherObj); // 12
 ```
+
+## 🧠 5 module patterns
+
+#### :one: Pattern 1
+```js
+// greet.js
+function hello() { console.log("hello"); }
+
+module.exports = hello;
+
+// app.js
+const hello = require("./greet");
+hello();
+```
+
+#### :two: Pattern 2
+```js
+// greet.js
+function hello() {
+  console.log("hello");
+}
+
+module.exports.hello = hello;
+
+// app.js
+const hello = require("./greet").hello;
+hello();
+```
+
+### :three: Pattern 3
+```js
+function Hello() {
+  this.greeting = "hi there";
+  
+  this.speak = function() {
+    console.log(this.greeting);
+  }
+}
+
+module.exports = new Hello();
+```
+
+```js
+const hello = require("./greet");
+
+hello.speak(); // hi there
+```
