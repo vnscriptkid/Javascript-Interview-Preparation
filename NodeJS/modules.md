@@ -101,3 +101,18 @@ ObjectDefineProperty(Module, 'wrapper', {
 })
 ```
 => Here is why you always have access to above global variables inside your code ERMFD
+
+#### 🚪 First entrance 
+```js
+Module.prototype.require = function(id) {
+  // ...
+  return Module._load(id, this, /* isMain */ false);
+};
+```
+#### Dig deeper
+```
+Module._load = function(request, parent, isMain) {
+  // ...
+  return module.exports;
+}
+```
