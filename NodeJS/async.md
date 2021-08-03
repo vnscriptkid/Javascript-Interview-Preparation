@@ -13,4 +13,7 @@
 - __Event-driven__ implies: __libuv__, sitting outside V8, managing events coming from OS by
   - putting events in a __queue__ to process in sequence
   - running a __event loop__, constantly checking __queue__ to process the next one
-- __Non-blocking__ means: __livuv__ while doing all those things, does not block __main thread__, it runs code on __another thread__
+- __Non-blocking__ means: __livuv__ while doing all those things, does not block __main thread__, it runs code on __another thread__ (asynchronouly)
+
+## Advantages of NodeJS
+- JS code runs one thing at a time => Easy to reason, no Race Conditions, Deadlocks ...
