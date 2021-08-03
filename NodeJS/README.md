@@ -12,3 +12,24 @@
 * C++
 
 Order of abtraction: Javascript -> C/C++ -> Assembly -> Machine Code
+
+## Lookup Nodejs source code
+- General view
+  - `/lib`: define api (js code)
+  - `/src`: c++ implementations of those api
+
+- How __binding__ works
+  - `lib/fs.js`: Look up `read()` corresponding to `fs.read()` in nodejs
+  ```js
+  function read(fd, buffer, offset, length, position, callback) {
+    // ...
+    binding.read(fd, buffer, offset, length, position, req);
+  }
+  ```
+  
+  - `src/node_file.cc`
+  ```js
+  static void Read(const FunctionCallbackInfo<Value>& args) {
+  // ...
+  env->SetMethod(target, "read", Read);
+  ```
