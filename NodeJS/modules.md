@@ -46,4 +46,58 @@ function wrapSafe(filename, content, cjsModuleInstance) {
     throw err;
   }
 }
+
+// ...
+
+let wrap = function(script) {
+  return Module.wrapper[0] + script + Module.wrapper[1];
+};
+
+const wrapper = [
+  '(function (exports, require, module, __filename, __dirname) { ',
+  '\n});',
+];
+
+let wrapperProxy = new Proxy(wrapper, {
+  set(target, property, value, receiver) {
+    patched = true;
+    return ReflectSet(target, property, value, receiver);
+  },
+
+  defineProperty(target, property, descriptor) {
+    patched = true;
+    return ObjectDefineProperty(target, property, descriptor);
+  }
+});
+
+
+ObjectDefineProperty(Module, 'wrap', {
+  get() {
+    return wrap;
+  },
+
+  set(value) {
+    patched = true;
+    wrap = value;
+  }
+});
+
+ObjectDefineProperty(Module, 'wrapper', {
+  get() {
+    return wrapperProxy;
+  },
+
+  set(value) {
+    patched = true;
+    wrapperProxy = value;
+  }
+});
 ```
+
+* Your code is wrapped inside:
+```js
+(function (exports, require, module, __filename, __dirname) {
+ // your code is appended here
+})
+```
+=> Here is why you always have access to above global variables inside your code
