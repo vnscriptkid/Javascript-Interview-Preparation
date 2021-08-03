@@ -103,7 +103,7 @@ ObjectDefineProperty(Module, 'wrapper', {
 => Here is why you always have access to above global variables inside your code ERMFD
 
 #### Let's generalize it
-```
+```js
 Module._load = function(request, parent, isMain) {
   // ...
   
