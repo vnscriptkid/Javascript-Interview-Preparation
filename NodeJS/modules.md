@@ -167,6 +167,7 @@ hello();
 
 ### :three: Pattern 3
 ```js
+// greet.js
 function Hello() {
   this.greeting = "hi there";
   
@@ -176,9 +177,8 @@ function Hello() {
 }
 
 module.exports = new Hello();
-```
 
-```js
+// app.js
 const hello = require("./greet");
 
 hello.speak(); // hi there
