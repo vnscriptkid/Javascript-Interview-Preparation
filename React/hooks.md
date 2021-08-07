@@ -37,6 +37,19 @@ if (minutes < 4) {
 }
 ```
 
+#### setState is async
+```js
+const [targetId, setTargetId] = useState('');
+    
+function handleDeleteActivity(event: any) {
+    setTargetId(event.target.name);
+    // `targetId` here is not available yet as setTargetId is async
+    deleteActivity(targetId)
+    // fix
+    // deleteActivity(event.target.name)
+}
+```
+
 ## 👇 useRef 
 - Have direct access to DOM node through: `ref.current`
 - Imperative way to change UI
