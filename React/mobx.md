@@ -12,8 +12,14 @@ class ActivityStore {
 
     constructor() {
         makeObservable(this, {
-            title: observable
+            title: observable,
+            setTitle: action
         })
+    }
+    
+    // must be arrow fn so that this is bound to object ActivityStore
+    setTitle = () => {
+        this.title = this.title + '!!!';
     }
 }
 ```
@@ -55,4 +61,8 @@ ReactDOM.render(
 const { activityStore } = useStore();
 //////
 <h2>{activityStore.title}</h2>
+/////
+<Button content='Add one !' onClick={activityStore.setTitle} />
+// hoc
+export default observer(App);
 ```
