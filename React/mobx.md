@@ -74,6 +74,10 @@ import {createBrowserHistory} from 'history';
 
 export const history = createBrowserHistory();
 
+<Router history={history}>
+  <App />
+</Router>
+
 // someStore.ts: import history from index.tsx
 history.push('/activities');
 ```
