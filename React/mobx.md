@@ -66,3 +66,14 @@ const { activityStore } = useStore();
 // hoc
 export default observer(App);
 ```
+
+## Access to browser in mobx (to redirect after resposne)
+```js
+// index.tsx
+import {createBrowserHistory} from 'history';
+
+export const history = createBrowserHistory();
+
+// someStore.ts: import history from index.tsx
+history.push('/activities');
+```
