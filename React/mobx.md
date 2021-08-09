@@ -81,3 +81,25 @@ export const history = createBrowserHistory();
 // someStore.ts: import history from index.tsx
 history.push('/activities');
 ```
+
+## Usecase: React to changes
+```js
+export default class CommonStore {
+    token: string | null = window.localStorage.getItem('jwt');
+    
+    constructor() {
+        makeAutoObservable(this);
+
+        // if token is changed, do something
+        reaction(
+            () => this.token,
+            token => {
+                if (token) {
+                    window.localStorage.setItem('jwt', token);
+                } else {
+                    window.localStorage.removeItem('jwt');
+                }
+            }
+        )
+    }
+```
