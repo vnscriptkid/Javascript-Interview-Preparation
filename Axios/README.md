@@ -17,3 +17,12 @@ axios.interceptors.response.use(async response => {
     }
 })
 ```
+
+## Usecase 3: Send jwt along with the reqs
+```js
+axios.interceptors.request.use(config => {
+    const token = store.commonStore.token;
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
+```
