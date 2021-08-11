@@ -3,6 +3,12 @@
 npm install mobx mobx-react-lite
 ```
 
+## Advantages
+* Communicating between different stores is easy
+* Change states simply by calling a function
+* Clear separation between different stores, it has it's own states
+* Encapsulate each store inside a class, free to write a lot of custom logic, calculated props inside
+
 ## Setup
 #### :one: Resource store
 ```js
