@@ -13,8 +13,8 @@ const result = useMemo(() => {
 
 #### :two: Skip diffing process if props unchanged
 ```js
-const oldEle = MyComponent();
-const newEle = MyComponent();
+const oldEle = MyComponent(props1);
+const newEle = MyComponent(props2);
 
 //// this is where we care about
 const diff = compare(oldEle, newEle);
@@ -33,5 +33,24 @@ if (propsChanged(oldEle.props, newEle.props)) {
   commitChanges(diff);
 }
 ```
+- Props can be `object`, `array`, `function`
+```js
+//// Approach 1: Keep props passed down as primitive type
+<FeedPost key={post.id} post={post} />
+<FeedPost key={post.id} {...post} />
 
+//// Approach 2: For object types, keep referential identity between rendering with `useMemo` || `useCallback`
+const handleNewPostSuccess = () => { ... }
+/////// OPTIMIZED
+const handleNewPostSuccess = useMemo(() => () => {
+  // ...
+}, [newPostDate]);
+/////// OR
+const handleNewPostSuccess = useCallback(() => {
+  // ...
+}, [newPostDate]);
+
+<NewPost date={newPostDate} onSuccess={handleNewPostSuccess} />
+
+```
 #### :three:
