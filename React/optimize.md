@@ -25,6 +25,8 @@ export default function FeedPost({ post }) { ... };
 
 ```js
 export default memo(function FeedPost({ post }) { ... });
+////
+<FeedPost key={post.uid} post={post} />
 //// behind the scene
 if (propsChanged(oldEle.props, newEle.props)) {
   const diff = compare(oldEle, newEle);
