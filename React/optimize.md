@@ -11,7 +11,7 @@ const result = useMemo(() => {
 }, [x, y])
 ```
 
-#### :two: Speed up diffing process
+#### :two: Skip diffing process if props unchanged
 ```js
 const oldEle = MyComponent();
 const newEle = MyComponent();
@@ -19,9 +19,17 @@ const newEle = MyComponent();
 //// this is where we care about
 const diff = compare(oldEle, newEle);
 commitChanges(diff)
-
 ////
 export default function FeedPost({ post }) { ... };
-////
-export default function memo(FeedPost({ post }) { ... });
 ```
+
+```js
+export default memo(function FeedPost({ post }) { ... });
+//// behind the scene
+if (propsChanged(oldEle.props, newEle.props)) {
+  const diff = compare(oldEle, newEle);
+  commitChanges(diff);
+}
+```
+
+#### :three:
