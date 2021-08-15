@@ -11,7 +11,7 @@ const result = useMemo(() => {
 }, [x, y])
 ```
 
-#### Speed up diffing process
+#### :two: Speed up diffing process
 ```js
 const oldEle = MyComponent();
 const newEle = MyComponent();
