@@ -44,11 +44,11 @@ const handleNewPostSuccess = () => { ... }
 /////// OPTIMIZED
 const handleNewPostSuccess = useMemo(() => () => {
   // ...
-}, [newPostDate]);
+}, [x, y]);
 /////// OR
 const handleNewPostSuccess = useCallback(() => {
   // ...
-}, [newPostDate]);
+}, [x, y]);
 
 <NewPost date={newPostDate} onSuccess={handleNewPostSuccess} />
 
