@@ -51,5 +51,8 @@ const handleNewPostSuccess = useCallback(() => {
 }, [x, y]);
 
 <NewPost date={newPostDate} onSuccess={handleNewPostSuccess} />
-
 ```
+
+## `useEffect` vs `useMemo`
+- `useMemo` returns something
+- `useEffect` don't
