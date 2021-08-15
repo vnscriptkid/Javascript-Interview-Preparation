@@ -53,4 +53,3 @@ const handleNewPostSuccess = useCallback(() => {
 <NewPost date={newPostDate} onSuccess={handleNewPostSuccess} />
 
 ```
-#### :three:
