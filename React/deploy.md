@@ -10,3 +10,13 @@ REACT_APP_CHAT_URL=http://localhost:5000/chat
 REACT_APP_API_URL=/api
 REACT_APP_CHAT_URL=/chat
 ```
+
+#### Config to move build files to dotnet server, in `package.json`
+```json
+"postbuild": "mv build ../API/wwwroot"
+```
+
+#### Run the build
+```console
+npm run build
+```
