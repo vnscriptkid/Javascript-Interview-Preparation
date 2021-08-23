@@ -13,7 +13,7 @@ REACT_APP_CHAT_URL=/chat
 
 #### Config to move build files to dotnet server, in `package.json`
 ```json
-"postbuild": "mv build ../API/wwwroot"
+"postbuild": "rimraf ../API/wwwroot && mv build ../API/wwwroot"
 ```
 
 #### Run the build
