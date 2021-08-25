@@ -26,3 +26,11 @@ axios.interceptors.request.use(config => {
     return config;
 })
 ```
+
+## Usecase 4: Attach cookie along with reqs
+```js
+axios.interceptors.request.use(config => {
+    config.withCredentials = true;
+    return config;
+})
+```
