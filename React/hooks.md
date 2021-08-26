@@ -73,6 +73,7 @@ useEffect(() => {
   - ✔️ Save data to local? Perfect
   - ✔️ Play a sound ? Awesome
   - ✔️ Adjust scroll
+  - ✔️ Focus on invalid field after submit (Keep `error` state in sync with focusing fields)
 - When side-effect does not happen?
 ```js
 const first20Chars = message.substr(0, 20);
