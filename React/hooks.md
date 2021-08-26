@@ -55,7 +55,7 @@ function handleDeleteActivity(event: any) {
 - Imperative way to change UI
 
 ## useEffect (Think in events 🥳)
-* Runs after UI has been rendered
+* Runs after every render
 * `Effect` here means __side effects__
 ```js
 // whenever message changes, we want to do something (side effect)
