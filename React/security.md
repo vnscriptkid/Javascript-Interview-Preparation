@@ -12,6 +12,7 @@
 />
 ```
 #### ✔️ Fix it
+https://github.com/cure53/DOMPurify
 ```html
 <div
   dangerouslySetInnerHTML={{ __html: DomPurify.sanitize(user.bio) }}
