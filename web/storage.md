@@ -14,4 +14,4 @@ https://www.youtube.com/watch?v=2PPSXonhIck
   - Since then, for every reqs sent by browsers to server (it attaches cookie data in headers)
 - `document.cookie`
 - By setting `http=true`, means this piece of data can only sent by browsers (not javascript)
-- ⚠️ Can't be sent across domain
+- ⚠️ Can't be sent across domain (even same domain but different ports)
