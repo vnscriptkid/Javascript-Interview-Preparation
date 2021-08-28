@@ -6,3 +6,10 @@ https://www.youtube.com/watch?v=2PPSXonhIck
 #### localStorage
 - ✔️ Persist user state accross refreshes, tab closings, browser closings
 - ⚠️ Vulnerable to Cross-site scripting attack
+
+#### Cookie
+- Flow
+  - Server tells client (browser) to set cookie
+  - Since then, for every reqs sent by browsers to server (it attaches cookie data in headers)
+- `document.cookie`
+- By setting `http=true`, means this piece of data can only sent by browsers (not javascript)
