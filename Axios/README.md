@@ -28,6 +28,7 @@ axios.interceptors.request.use(config => {
 })
 ```
 #### :two: Use axios instance (for certain reqs)
+- Instance to limit endpoints in 1 api 
 ```js
 const authAxios = axios.create({
 baseURL: process.env.REACT_APP_API_URL,
@@ -41,6 +42,14 @@ authAxios.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 ```
+- Instance to limit multiple apis
+```js
+const {origin} = new URL(config.url);
+const allowedOrigins = ['http://localhost:3000'];
+if (allowedOrigins.includes(origin) {
+// ...
+}
+```      
 
 ## Usecase 4: Attach cookie along with reqs
 ```js
