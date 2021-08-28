@@ -5,9 +5,15 @@
 
 <img src="https://user-images.githubusercontent.com/28957748/131209062-ae47627c-b6a6-453e-ab91-e3ceddc9c8ad.png" height="400px" />
 
-#### Vulnerable code
+#### ☠️ Vulnerable code
 ```html
 <div
   dangerouslySetInnerHTML={{ __html: user.bio }}
+/>
+```
+#### ✔️ Fix it
+```html
+<div
+  dangerouslySetInnerHTML={{ __html: DomPurify.sanitize(user.bio) }}
 />
 ```
