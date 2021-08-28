@@ -18,3 +18,5 @@ https://github.com/cure53/DOMPurify
   dangerouslySetInnerHTML={{ __html: DomPurify.sanitize(user.bio) }}
 />
 ```
+
+## CSRF: Cross Site Request Forgery
