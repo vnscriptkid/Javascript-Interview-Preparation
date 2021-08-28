@@ -20,3 +20,5 @@ https://github.com/cure53/DOMPurify
 ```
 
 ## CSRF: Cross Site Request Forgery
+- Mitigate using `Double Submit Cookie`
+https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#Protecting_REST_Services:_Use_of_Custom_Request_Headers
