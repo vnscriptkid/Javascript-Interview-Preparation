@@ -39,7 +39,7 @@ authAxios.interceptors.request.use(
       return config;
     },
     (error) => Promise.reject(error)
-    );
+);
 ```
 
 ## Usecase 4: Attach cookie along with reqs
