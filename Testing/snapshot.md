@@ -13,3 +13,13 @@ test('renders', () => {
 - One day, you update component with `id` attribute
 - Test fails as new UI does not match with the last time (statically added to test file)
 - You update test file, it works file again
+
+## jest-emotion
+```console
+npm install --save-dev jest-emotion
+```
+```js
+// jest.config.js
+module.exports = {
+    snapshotSerializers: ['jest-emotion']
+}
