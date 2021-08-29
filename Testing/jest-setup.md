@@ -26,3 +26,17 @@ module.exports = {
     moduleDirectories: ['node_modules', path.join(__dirname, 'src'), 'shared']
 }    
 ```
+
+## JestDOM
+```console
+npm install --save-dev @testing-library/jest-dom
+```
+- Pros
+  - Better assertion api
+  - Better error logging
+- Global setup (without `import` in every test file)
+```js
+module.exports = {
+    setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']
+}
+```
