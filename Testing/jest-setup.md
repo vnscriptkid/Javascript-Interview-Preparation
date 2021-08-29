@@ -9,3 +9,11 @@ module.exports = {
   // ...
 }    
 ```
+
+## Simulate `window` in `jest`
+```js
+// jest.config.js
+module.exports = {
+    testEnvironment: 'jest-environment-jsdom'
+}
+```
