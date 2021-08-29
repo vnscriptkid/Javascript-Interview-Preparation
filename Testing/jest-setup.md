@@ -17,3 +17,12 @@ module.exports = {
     testEnvironment: 'jest-environment-jsdom'
 }
 ```
+
+## Load module by name like a lib
+```js
+const path = require('path')
+
+module.exports = {
+    moduleDirectories: ['node_modules', path.join(__dirname, 'src'), 'shared']
+}    
+```
