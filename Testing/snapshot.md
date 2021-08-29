@@ -14,12 +14,12 @@ test('renders', () => {
 - Test fails as new UI does not match with the last time (statically added to test file)
 - You update test file, it works file again
 
-## jest-emotion
+## jest-emotion: Show all css attributes in static code generated
 ```console
-npm install --save-dev jest-emotion
+npm install --save-dev @emotion/jest
 ```
 ```js
 // jest.config.js
 module.exports = {
-    snapshotSerializers: ['jest-emotion']
+    snapshotSerializers: ['@emotion/jest/serializer']
 }
