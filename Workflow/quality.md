@@ -13,3 +13,11 @@ npm install --save-dev lint-staged husky
   ]
 }
 ```
+- Config husky
+```console
+npx husky-init && npm install 
+```
+- In `.husky/pre-commit`
+```console
+npx lint-staged && npm run build
+```
