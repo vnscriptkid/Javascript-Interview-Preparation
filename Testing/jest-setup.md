@@ -78,3 +78,14 @@ module.exports = {
   "include": ["src", "test/*"]
 }
 ```
+
+## Setting up Visual Studio Code intellisense for Jest globals in `jsconfig.json`
+```js
+{
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}
+```
