@@ -64,5 +64,17 @@ module.exports = {
     },
   ],
 }
+```
 
+## Hey, vscode! Here's my settings, apply it! `jsconfig.json`
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*", "src/shared/*", "test/*"]
+    }
+  },
+  "include": ["src", "test/*"]
+}
 ```
