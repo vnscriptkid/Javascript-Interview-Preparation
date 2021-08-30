@@ -40,3 +40,29 @@ module.exports = {
     setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']
 }
 ```
+
+## Hey, eslint! Here's my settings, apply it
+```console
+npm install --save-dev eslint-import-resolver-jest
+```
+
+```js
+// .eslintrc.js
+const path = require('path')
+
+module.exports = {
+  overrides: [
+    {
+      files: ['**/__tests__/**'],
+      settings: {
+        'import/resolver': {
+          jest: {
+            jestConfigFile: path.join(__dirname, './jest.config.js'),
+          },
+        },
+      },
+    },
+  ],
+}
+
+```
