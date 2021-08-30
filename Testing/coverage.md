@@ -7,4 +7,6 @@
 ```
 // jest.config.js
 collectCoverageFrom: ['**/src/**/*.js']
-``
+```
+
+## Ignore `coverage/` from git
