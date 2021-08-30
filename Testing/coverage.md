@@ -14,5 +14,24 @@ collectCoverageFrom: ['**/src/**/*.js']
 ## Behind the scene
 https://github.com/istanbuljs/babel-plugin-istanbul
 
-## More
 egghead-configure-jest-for-testing-javascript-applications/14-scikit-learn-configure-jest-to-report-code-coverage-on-project-files
+
+## Add thresholds
+```js
+// jest.config.js
+coverageThreshold: {
+  global: {
+    statements: 20,
+    branches: 20,
+    functions: 20,
+    lines: 20,
+  },
+  './src/shared/utils.js': {
+    statements: 100,
+    branches: 80,
+    functions: 100,
+    lines: 100,
+  },
+}
+```
+
