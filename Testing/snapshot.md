@@ -23,3 +23,12 @@ npm install --save-dev @emotion/jest
 module.exports = {
     snapshotSerializers: ['@emotion/jest/serializer']
 }
+```
+
+## Usecase: Use snapshot for error message
+```js
+// Instead
+expect(res.json).toHaveBeenCalledWith({message: `No bookId provided`})
+// Do
+expect(res.json.mock.calls[0]).toMatchInlineSnapshot()
+```
