@@ -28,3 +28,10 @@ const api = axios.create({baseURL})
 
 api.interceptors.response.use(getData, handleRequestFailure)
 ```
+
+## Assert on errors
+```js
+await api.post('auth/register', userForm)
+const error = await api.post('auth/register', userForm).catch(e => e)
+expect(error).toMatchInlineSnapshot()
+```  
