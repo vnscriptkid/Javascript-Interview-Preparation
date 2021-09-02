@@ -8,6 +8,9 @@
 - https://github.com/kentcdodds/dom-testing-library-with-anything/tree/2019-08 
 - https://github.com/kentcdodds/testing-node-apps
 
+## Have some fun
+https://testing-playground.com/
+
 ## Types of Testing
 - Unit test
   - Controllers: mock db calls to return fake result
