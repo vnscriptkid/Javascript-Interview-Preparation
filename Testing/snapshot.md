@@ -32,3 +32,15 @@ expect(res.json).toHaveBeenCalledWith({message: `No bookId provided`})
 // Do
 expect(res.json.mock.calls[0]).toMatchInlineSnapshot()
 ```
+
+## Usecase: Not sure about id in error message
+```js
+const error = await authAPI.get(listItemIdUrl).catch(resolve)
+
+const idlessMessage = error.data.message.replace(
+  pData.listItem.id,
+  'LIST_ITEM_ID',
+)
+
+expect(idlessMessage).toMatchInlineSnapshot()
+```
