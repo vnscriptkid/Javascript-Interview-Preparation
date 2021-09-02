@@ -33,3 +33,12 @@ booksDB.readById.mockResolvedValueOnce(book)
 ```js
 expect(booksDB.readById).toHaveBeenCalledWith(book.id)
 ```
+
+## Usecase: Mock react's component event handlers
+```js
+const handleSubmit = jest.fn()
+
+render(<Login onSubmit={handleSubmit} />)
+
+expect(handleSubmit).toHaveBeenCalledWith({})
+```  
