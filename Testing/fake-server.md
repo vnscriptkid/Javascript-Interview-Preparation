@@ -19,4 +19,21 @@ const server = setupServer(
 
 beforeAll(() => server.listen())
 afterAll(() => server.close())
+afterEach(() => server.resetHandlers())
+```
+
+## Customize server for specific test
+```js
+test(`login fails 500`, async () => {
+  const errorMsg = 'something went wrong'
+  server.use(
+    rest.post(
+      'https://auth-provider.example.com/api/login',
+      async (req, res, ctx) => {
+        return res(ctx.delay(0), ctx.status(500), ctx.json({message: errorMsg}))
+      },
+    ),
+  )
+  // ...
+})
 ```
