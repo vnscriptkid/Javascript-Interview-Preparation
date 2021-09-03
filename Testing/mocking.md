@@ -42,3 +42,40 @@ render(<Login onSubmit={handleSubmit} />)
 
 expect(handleSubmit).toHaveBeenCalledWith({})
 ```  
+
+## Mock api not supported in Test env
+```js
+beforeAll(() => {
+  window.navigator.geolocation = {
+    getCurrentPosition: jest.fn(),
+  }
+})
+
+test('displays the users current location', async () => {
+  const position = {
+    coords: {
+      latitude: 20,
+      longitude: 106,
+    },
+  }
+
+  const {promise, resolve} = deferred()
+
+  window.navigator.geolocation.getCurrentPosition.mockImplementation(
+    successCb => {
+      promise.then(() => successCb(position))
+    },
+  )
+  
+  render(<Location />)
+
+  expect(screen.getByLabelText(/loading/i)).toBeInTheDocument()
+
+  await act(async () => {
+    resolve()
+    await promise
+  })
+  
+  expect(screen.queryByLabelText(/loading/i)).not.toBeInTheDocument()
+}  
+```
