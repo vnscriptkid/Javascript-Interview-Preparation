@@ -21,3 +21,23 @@ function deferred() {
     console.log('final line')
 })()
 ```
+
+## `obj.current` pattern
+```js
+function setup(opts) {
+  let result = {}
+  function TestComponent() {
+    result.current = useCounter(opts) // make sure we don't reassign the result obj
+    return null
+  }
+
+  render(<TestComponent />)
+
+  return result
+}
+
+test('exposes the count and increment/decrement functions', () => {
+  let result = setup()
+  // ...
+}  
+```
