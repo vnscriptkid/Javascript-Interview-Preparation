@@ -79,3 +79,29 @@ test('displays the users current location', async () => {
   expect(screen.queryByLabelText(/loading/i)).not.toBeInTheDocument()
 }  
 ```
+
+## Mock a custom hook
+```js
+import {useCurrentPosition} from 'react-use-geolocation'
+
+jest.mock('react-use-geolocation')
+
+let setPosition
+function useMockCurrentPosition() {
+  const [pos, setPos] = React.useState(null)
+
+  setPosition = setPos
+
+  return [pos]
+}
+
+useCurrentPosition.mockImplementation(useMockCurrentPosition)
+
+render(<Location />)
+
+expect(screen.getByLabelText(/loading/i)).toBeInTheDocument()
+
+act(() => {
+  setPosition(position)
+})
+```
