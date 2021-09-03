@@ -15,3 +15,15 @@ test('exposes the count and increment/decrement functions', () => {
   expect(result.count).toEqual(0)
 })
 ```
+
+## Use lib
+```js
+import {renderHook, act} from '@testing-library/react-hooks'
+
+test('step can be changed', () => {
+  let {result, rerender} = renderHook(useCounter, {
+    initialProps: {initialCount: 10, step: 2},
+  })
+  // ...
+})  
+```  
