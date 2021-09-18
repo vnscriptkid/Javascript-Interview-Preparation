@@ -8,3 +8,5 @@
 
 ## Checklist
 1. Lazy Loading
+2. Improve slow render (avoid re-running unneccessary expensive calculations) => useMemo, useCallback
+3. Avoid unneccesary re-renders => memo
