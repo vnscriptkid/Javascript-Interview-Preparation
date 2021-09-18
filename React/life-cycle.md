@@ -3,7 +3,7 @@
          ↖                   ↙
               state change
               
-// render: domNow = render() 
-// reconciliation: placesToUpdate = diff(domNow, domPrev)
+// render: reactEleNow = render() 
+// reconciliation: placesToUpdate = diff(reactEleNow, reactElePrev)
 // commit: commit(placesToUpdate)
 ```
