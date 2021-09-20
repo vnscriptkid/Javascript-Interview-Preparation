@@ -10,3 +10,4 @@
 1. Lazy Loading
 2. Improve slow render (avoid re-running unneccessary expensive calculations) => useMemo, useCallback
 3. Avoid unneccesary re-renders => memo
+4. Window large lists with react-virtual
