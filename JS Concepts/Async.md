@@ -1,3 +1,7 @@
+## Promise
+- tool to handle things in the future
+- 3 states of promise: unresolved, resolved, rejected
+
 ## :star: V8 vs Chrome vs Node
 
 ## :star: Async vs Sync
