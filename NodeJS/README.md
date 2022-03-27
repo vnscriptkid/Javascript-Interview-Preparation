@@ -44,7 +44,8 @@ Order of abtraction: Javascript -> C/C++ -> Assembly -> Machine Code
   ```
 
 ## Why NodeJS
-- Fulltack of JS
+- Fulltack of JS => frontend and backend speak the same language
+- Simplicity: single-threaded nature => don't have to deal with concurrency issues like race conditions, deadlock
 
 ## NodeJS = JS (ECMAScript Specification) + Features X
 ```cpp
