@@ -28,3 +28,13 @@
 - Character encoding: How numbers are converted to 0s and 1s. How many bits are used for each number.
 
 > a Unicode string is a sequence of code points, which are numbers from 0 through 0x10FFFF (1,114,111 decimal). This sequence of code points needs to be represented in memory as a set of code units, and code units are then mapped to 8-bit bytes. The rules for translating a Unicode string into a sequence of bytes are called a character encoding, or just an encoding.
+
+## libuv
+- Queues
+  - 1. Timer queue
+  - 2. I/O callback queue
+  - 3. Check queue (setImmediate)
+  - 4. Close queue (close events)
+  - 0. Microtasks queue (run between 1,2,3,4)
+    - queue 1: nextTick
+    - queue 2: promise
